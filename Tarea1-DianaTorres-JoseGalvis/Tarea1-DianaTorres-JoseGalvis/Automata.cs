@@ -13,6 +13,10 @@ namespace Tarea1_DianaTorres_JoseGalvis
 
         private List<Estado> estados;
         private List<Transicion> transiciones;
+        private List<string> estimulos, respuestas;
+        
+
+
 
         private Automata automataMinimo;
 
@@ -21,6 +25,9 @@ namespace Tarea1_DianaTorres_JoseGalvis
         internal List<Transicion> Transiciones { get => transiciones; set => transiciones = value; }
         public string Tipo { get => tipo; set => tipo = value; }
         public Automata AutomataMinimo { get => automataMinimo; set => automataMinimo = value; }
+        public List<string> Estimulos { get => estimulos; set => estimulos = value; }
+        public List<string> Respuestas { get => respuestas; set => respuestas = value; }
+
 
 
         //constructor
@@ -36,13 +43,35 @@ namespace Tarea1_DianaTorres_JoseGalvis
         //jose
         public Boolean EstadoMealy(string valor)
         {
-            return false;
+            Estado nuevo = new Estado(valor, null);
+            Boolean r = true;
+            if (estados.Contains(nuevo))
+            {
+                r = false;
+            }
+            else
+            {
+                estados.Add(nuevo);
+            }
+
+
+            return r;
         }
 
         //jose
         public Boolean EstadoMoore(string valor, string respuesta)
         {
-            return false;
+            Boolean r = true;
+            Estado estado = new Estado(valor, respuesta);
+            if(!respuestas.Contains(respuesta) || estados.Contains(estado))
+            {
+                r = false;
+            }
+            else
+            {
+                estados.Add(estado);
+            }
+            return r;
         }
 
         //diana
