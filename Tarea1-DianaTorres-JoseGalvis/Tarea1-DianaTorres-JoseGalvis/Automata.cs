@@ -8,7 +8,8 @@ namespace Tarea1_DianaTorres_JoseGalvis
 {
     class Automata
     {
-        private string tipo;
+        
+        private string tipo; //va a ser : MEALY | MOORE
 
         private List<Estado> estados;
         private List<Transicion> transiciones;
@@ -45,9 +46,38 @@ namespace Tarea1_DianaTorres_JoseGalvis
         }
 
         //diana
-        public Boolean agregarTransicion(string tipo, string estimulo, string respuesta, string llegada, string salida)
+        public Boolean agregarTransicion(string tipo, string estimulo, string respuesta, Estado llegada, Estado salida)
         {
-            return false;
+            Boolean agregado = false;
+            //switch (tipo)
+            //{
+            //    case "MEALY":
+                    try
+                    {
+                        Transicion trans = new Transicion(estimulo, respuesta, llegada, salida);
+                        transiciones.Add(trans);
+                        agregado = true;
+                    }
+                    catch (Exception e)
+                    {
+                       
+                    }
+                   
+                    //break;
+                //case "MOORE":
+                //    try
+                //    {
+                //        Transicion trans = new Transicion(estimulo, respuesta, llegada, salida);
+                //        transiciones.Add(trans);
+                //        agregado = true;
+                //    }
+                //    catch (Exception e)
+                //    {
+
+                //    }
+                //    break;
+            //}
+            return agregado;
         }
 
         //dianayjose
