@@ -28,32 +28,23 @@ namespace Tarea1_DianaTorres_JoseGalvis
             transiciones = new Hashtable();
         }
 
-        //
-        public List<String> BFS()
+        //metodo organizar estadosConRespuestas segun tipo
+        public void inicializarEstadosConRespuestas()
         {
-            //grafo, n
+            switch (tipo)
+            {
+                case "MEALY":
 
+                    break;
+                case "MOORE":
 
-            //grafo.reestablecerNodos();
-
-            //		if (grafo.existeNodo(n)) {
-
-            //			LinkedList<N> cola = new LinkedList<N>();
-            //        cola.add(n);
-            //			grafo.buscarNodo(n).setEstaVisitado(true);
-            //        ArrayList<N> array = new ArrayList<N>();
-            //			while (!cola.isEmpty()) {
-            //				N actual = cola.poll();
-            //        array.add(actual);
-            //				ArrayList<N> aux = grafo.darAdyacentes(actual);
-            //				for (int i = 0; i<aux.size(); i++) {
-            //					N sig = aux.get(i);
-            //					if (grafo.buscarNodo(sig).isEstaVisitado() == false) {
-            //						grafo.buscarNodo(sig).setEstaVisitado(true);
-            //        cola.add(sig);
-            //					}
-            return null;
+                    break;
+            }
         }
+      
+
+
+
 
 
 
