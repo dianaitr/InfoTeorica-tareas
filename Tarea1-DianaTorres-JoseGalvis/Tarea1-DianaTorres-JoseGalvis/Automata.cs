@@ -64,30 +64,64 @@ namespace Tarea1_DianaTorres_JoseGalvis
         //
         public List<String> BFS()
         {
-            //grafo, n
-
-
             //grafo.reestablecerNodos();
 
-            //		if (grafo.existeNodo(n)) {
+            //if (grafo.existeNodo(n))
+            //{
 
-            //			LinkedList<N> cola = new LinkedList<N>();
-            //        cola.add(n);
-            //			grafo.buscarNodo(n).setEstaVisitado(true);
-            //        ArrayList<N> array = new ArrayList<N>();
-            //			while (!cola.isEmpty()) {
-            //				N actual = cola.poll();
+            //    LinkedList<N> cola = new LinkedList<N>();
+            //    cola.add(n);
+            //    grafo.buscarNodo(n).setEstaVisitado(true);
+            //    ArrayList<N> array = new ArrayList<N>();
+            //    while (!cola.isEmpty())
+            //    {
+            //        N actual = cola.poll();
             //        array.add(actual);
-            //				ArrayList<N> aux = grafo.darAdyacentes(actual);
-            //				for (int i = 0; i<aux.size(); i++) {
-            //					N sig = aux.get(i);
-            //					if (grafo.buscarNodo(sig).isEstaVisitado() == false) {
-            //						grafo.buscarNodo(sig).setEstaVisitado(true);
-            //        cola.add(sig);
-            //					}
+            //        ArrayList<N> aux = grafo.darAdyacentes(actual);
+            //        for (int i = 0; i < aux.size(); i++)
+            //        {
+            //            N sig = aux.get(i);
+            //            if (grafo.buscarNodo(sig).isEstaVisitado() == false)
+            //            {
+            //                grafo.buscarNodo(sig).setEstaVisitado(true);
+            //                cola.add(sig);
+            //            }
+            //      
+
+
+
+            reestablecerEstados();
+
+            Estado estadoInicial = estados.First();
+            estadoInicial.setEstaVisitado(true);
+            Queue<string> cola = new Queue<string>();
+            cola.Enqueue(estadoInicial.getValor());
+            List<string> lista = new List<string>();
+
+            while (cola.Count != 0)
+            {
+                string actual = cola.Dequeue();
+                lista.Add(actual);
+                List<string> aux = new List<string>();
+                
+
+            }
+
+
+
+
             return null;
         }
 
+        //Este metodo reestablece el atributo de estaVisitado a false 
+        //para todos los estados del automata
+        public void reestablecerEstados()
+        {
+            for(int i = 0; i < estados.Count; i++)
+            {
+                estados.ElementAt(i).setEstaVisitado(false);
+            }
+        }
 
 
 
