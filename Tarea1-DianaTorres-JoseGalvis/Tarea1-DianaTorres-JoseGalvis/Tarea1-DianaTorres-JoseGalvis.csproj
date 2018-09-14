@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Automata.cs" />
+    <Compile Include="AutomataDiana.cs" />
     <Compile Include="Estado.cs" />
     <Compile Include="InterfazPrincipal.cs">
       <SubType>Form</SubType>
@@ -56,18 +57,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Transicion.cs" />
     <Compile Include="VentanaAutomata.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="VentanaAutomata.Designer.cs">
       <DependentUpon>VentanaAutomata.cs</DependentUpon>
-    </Compile>
-    <Compile Include="VentanaMooreER.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VentanaMooreER.Designer.cs">
-      <DependentUpon>VentanaMooreER.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="InterfazPrincipal.resx">
       <DependentUpon>InterfazPrincipal.cs</DependentUpon>
@@ -83,9 +77,6 @@
     </Compile>
     <EmbeddedResource Include="VentanaAutomata.resx">
       <DependentUpon>VentanaAutomata.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VentanaMooreER.resx">
-      <DependentUpon>VentanaMooreER.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
