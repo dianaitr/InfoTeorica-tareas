@@ -28,16 +28,26 @@ namespace Tarea1_DianaTorres_JoseGalvis
             transiciones = new Hashtable();
         }
 
+
+        //A PASAR
+        
         //metodo organizar estadosConRespuestas segun tipo
-        public void inicializarEstadosConRespuestas()
+        public void inicializarEstadosConRespuestas(List<Estado> estado, List<String> respuesta)
         {
             switch (tipo)
             {
                 case "MEALY":
 
+                    foreach(var est in estado)
+                    {
+                        estadosConRespuestas.Add(est, respuesta);
+                    }
+                    
+
                     break;
                 case "MOORE":
 
+                    estadosConRespuestas.Add(respuesta, estado);
                     break;
             }
         }

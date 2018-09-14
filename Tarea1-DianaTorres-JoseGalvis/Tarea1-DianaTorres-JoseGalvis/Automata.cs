@@ -14,19 +14,52 @@ namespace Tarea1_DianaTorres_JoseGalvis
         private Hashtable estadosConRespuestas;
         private Hashtable transiciones;
 
+        private List<Estado> estados;
+        private List<String> rptas;
+
+
         //getters & setters
         public Hashtable EstadosConRespuestas { get => estadosConRespuestas; set => estadosConRespuestas = value; }
         public string Tipo { get => tipo; set => tipo = value; }
         public Hashtable Transiciones { get => transiciones; set => transiciones = value; }
-        
+        public List<Estado> Estados { get => estados; set => estados = value; }
+
 
         //constructor
-        public Automata(string tipo)
+        public Automata(string tipo, List<Estado> estados)
         {
             this.Tipo = tipo;
             estadosConRespuestas = new Hashtable();
             transiciones = new Hashtable();
+            this.Estados = estados;
         }
+
+        //metodo organizar estadosConRespuestas segun tipo
+        public void inicializarEstadosConRespuestas( String estado, String respuesta)
+        {
+            switch (tipo)
+            {
+                case "MEALY":
+                    if (estadosConRespuestas[estado].Equals(null))
+                    {
+                        List<string> lista = new List<string>();
+                        lista.Add(respuesta);
+                        estadosConRespuestas.Add(estado, lista);
+                        
+                    }
+
+                    //List<string> listMealy = estadosConRespuestas[estado];
+
+                        //estadosConRespuestas.Add(estado, listMealy);
+                    
+                    break;
+                case "MOORE":
+
+                    //estadosConRespuestas.Add(respuesta, estado);
+                    break;
+            }
+        }
+
 
         //
         public List<String> BFS()
@@ -54,6 +87,10 @@ namespace Tarea1_DianaTorres_JoseGalvis
             //					}
             return null;
         }
+
+
+
+
 
 
 
