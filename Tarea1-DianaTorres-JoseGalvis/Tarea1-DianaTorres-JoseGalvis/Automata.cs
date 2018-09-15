@@ -61,8 +61,11 @@ namespace Tarea1_DianaTorres_JoseGalvis
         }
 
 
+        
+
+
         //
-        public List<String> BFS()
+        public void BFS()
         {
             //grafo.reestablecerNodos();
 
@@ -91,7 +94,7 @@ namespace Tarea1_DianaTorres_JoseGalvis
 
 
             reestablecerEstados();
-
+            
             Estado estadoInicial = estados.First();
             estadoInicial.setEstaVisitado(true);
             Queue<string> cola = new Queue<string>();
@@ -103,15 +106,41 @@ namespace Tarea1_DianaTorres_JoseGalvis
                 string actual = cola.Dequeue();
                 lista.Add(actual);
                 List<string> aux = new List<string>();
-                
 
+                string t = transiciones[actual] + "";
+                string[] transActuales = t.Split(',');
+                for (int i = 0; i < transActuales.Length; i++)
+                {
+                    aux.Add(transActuales[i]);
+                }
+
+                for (int i = 0; i < aux.Count; i++)
+                {
+                    string sig = aux.ElementAt(i);
+                    if (buscarEstado(sig).isEstaVisitado() == false)
+                    {
+                        buscarEstado(sig).setEstaVisitado(true);
+                        cola.Enqueue(sig);
+                    }
+
+
+                }
             }
 
-
-
-
-            return null;
+            
         }
+
+
+
+        public Estado buscarEstado(string valor)
+        {
+            return estados.Where(v => v.Equals(valor)).First();
+        }
+
+
+
+
+
 
         //Este metodo reestablece el atributo de estaVisitado a false 
         //para todos los estados del automata
@@ -122,6 +151,9 @@ namespace Tarea1_DianaTorres_JoseGalvis
                 estados.ElementAt(i).setEstaVisitado(false);
             }
         }
+
+
+        
 
 
 
