@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Automata.cs" />
-    <Compile Include="AutomataDiana.cs" />
     <Compile Include="Estado.cs" />
     <Compile Include="InterfazPrincipal.cs">
       <SubType>Form</SubType>

@@ -8,7 +8,7 @@ namespace Tarea1_DianaTorres_JoseGalvis
 
     
 {
-    class Estado
+   public  class Estado
     {
 
 

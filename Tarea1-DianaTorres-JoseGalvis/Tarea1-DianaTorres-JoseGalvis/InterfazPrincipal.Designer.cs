@@ -35,7 +35,9 @@
             this.btnDefinirAutomata = new System.Windows.Forms.Button();
             this.boxTipo = new System.Windows.Forms.ComboBox();
             this.txtEstados = new System.Windows.Forms.TextBox();
-            this.txtEstimulosRespuestas = new System.Windows.Forms.TextBox();
+            this.txtEstimulos = new System.Windows.Forms.TextBox();
+            this.txtRpta = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -72,21 +74,22 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(36, 294);
+            this.label4.Location = new System.Drawing.Point(36, 281);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(373, 21);
+            this.label4.Size = new System.Drawing.Size(291, 21);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Valores estímulos/respuestas (poner\",\" entre ellos) :";
+            this.label4.Text = "Valores estímulos (poner\",\" entre ellos) :";
             // 
             // btnDefinirAutomata
             // 
             this.btnDefinirAutomata.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDefinirAutomata.Location = new System.Drawing.Point(240, 367);
+            this.btnDefinirAutomata.Location = new System.Drawing.Point(240, 405);
             this.btnDefinirAutomata.Name = "btnDefinirAutomata";
             this.btnDefinirAutomata.Size = new System.Drawing.Size(169, 58);
             this.btnDefinirAutomata.TabIndex = 4;
             this.btnDefinirAutomata.Text = "Definir Autómata";
             this.btnDefinirAutomata.UseVisualStyleBackColor = true;
+            this.btnDefinirAutomata.Click += new System.EventHandler(this.btnDefinirAutomata_Click);
             // 
             // boxTipo
             // 
@@ -103,25 +106,48 @@
             // txtEstados
             // 
             this.txtEstados.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEstados.Location = new System.Drawing.Point(398, 204);
+            this.txtEstados.Location = new System.Drawing.Point(398, 180);
+            this.txtEstados.Multiline = true;
             this.txtEstados.Name = "txtEstados";
-            this.txtEstados.Size = new System.Drawing.Size(216, 28);
+            this.txtEstados.Size = new System.Drawing.Size(216, 51);
             this.txtEstados.TabIndex = 6;
             // 
-            // txtEstimulosRespuestas
+            // txtEstimulos
             // 
-            this.txtEstimulosRespuestas.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEstimulosRespuestas.Location = new System.Drawing.Point(398, 291);
-            this.txtEstimulosRespuestas.Name = "txtEstimulosRespuestas";
-            this.txtEstimulosRespuestas.Size = new System.Drawing.Size(216, 28);
-            this.txtEstimulosRespuestas.TabIndex = 7;
+            this.txtEstimulos.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEstimulos.Location = new System.Drawing.Point(398, 261);
+            this.txtEstimulos.Multiline = true;
+            this.txtEstimulos.Name = "txtEstimulos";
+            this.txtEstimulos.Size = new System.Drawing.Size(216, 51);
+            this.txtEstimulos.TabIndex = 7;
+            // 
+            // txtRpta
+            // 
+            this.txtRpta.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRpta.Location = new System.Drawing.Point(398, 339);
+            this.txtRpta.Multiline = true;
+            this.txtRpta.Name = "txtRpta";
+            this.txtRpta.Size = new System.Drawing.Size(216, 51);
+            this.txtRpta.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(36, 359);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(299, 21);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Valores respuestas (poner\",\" entre ellos) :";
             // 
             // InterfazPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(649, 493);
-            this.Controls.Add(this.txtEstimulosRespuestas);
+            this.Controls.Add(this.txtRpta);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtEstimulos);
             this.Controls.Add(this.txtEstados);
             this.Controls.Add(this.boxTipo);
             this.Controls.Add(this.btnDefinirAutomata);
@@ -145,6 +171,8 @@
         private System.Windows.Forms.Button btnDefinirAutomata;
         private System.Windows.Forms.ComboBox boxTipo;
         private System.Windows.Forms.TextBox txtEstados;
-        private System.Windows.Forms.TextBox txtEstimulosRespuestas;
+        private System.Windows.Forms.TextBox txtEstimulos;
+        private System.Windows.Forms.TextBox txtRpta;
+        private System.Windows.Forms.Label label5;
     }
 }
