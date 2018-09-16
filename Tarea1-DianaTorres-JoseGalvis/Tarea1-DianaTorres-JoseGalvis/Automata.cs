@@ -32,35 +32,33 @@ namespace Tarea1_DianaTorres_JoseGalvis
         public Automata(string tipo, List<Estado> estados, List<String> estimulos, List<string> rpta)
         {
             this.Tipo = tipo;
-            estadosConRespuestas = new Hashtable();
+            
             transiciones = new Hashtable();
             this.Estados = estados;
             this.Estimulos = estimulos;
             this.Respuestas = rpta;
+
+            inicializarEstadosConRespuestas();
         }
 
-        //metodo que organiza estadosConRespuestas segun tipo automata
-        public void inicializarEstadosConRespuestas(String estado, String respuesta)
+        
+        public void inicializarEstadosConRespuestas()
         {
+            estadosConRespuestas = new Hashtable();
             switch (tipo)
             {
                 case "MEALY":
-                    if (estadosConRespuestas[estado].Equals(null))
+                    foreach(Estado est in estados)
                     {
-                        List<string> lista = new List<string>();
-                        lista.Add(respuesta);
-                        estadosConRespuestas.Add(estado, lista);
-
+                        estadosConRespuestas.Add(est, "");
                     }
-
-                    //List<string> listMealy = estadosConRespuestas[estado];
-
-                    //estadosConRespuestas.Add(estado, listMealy);
-
                     break;
                 case "MOORE":
 
-                    //estadosConRespuestas.Add(respuesta, estado);
+                    foreach(string res in respuestas)
+                    {
+                        estadosConRespuestas.Add(res, "");
+                    }
                     break;
             }
         }
@@ -115,7 +113,8 @@ namespace Tarea1_DianaTorres_JoseGalvis
 
         public Estado buscarEstado(string valor)
         {
-            return estados.Where(v => v.Equals(valor)).First();
+            
+            return estados.Where(v => v.getValor().Equals(valor)).First();
         }
 
 

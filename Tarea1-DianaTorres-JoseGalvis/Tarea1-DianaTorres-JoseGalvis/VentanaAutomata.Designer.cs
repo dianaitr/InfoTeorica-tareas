@@ -29,24 +29,25 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tabla = new System.Windows.Forms.DataGridView();
+            this.Salidas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblTipoAutomata = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.tabla = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.comboSalida = new System.Windows.Forms.ComboBox();
-            this.comboLlegada = new System.Windows.Forms.ComboBox();
-            this.comboEstimulo = new System.Windows.Forms.ComboBox();
-            this.comboRespuesta = new System.Windows.Forms.ComboBox();
             this.btnAgregarTransicion = new System.Windows.Forms.Button();
-            this.Salidas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comboRespuesta = new System.Windows.Forms.ComboBox();
+            this.comboEstimulo = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboLlegada = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboSalida = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.btnAutomataConexo = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabla)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -54,10 +55,27 @@
             this.panel1.Controls.Add(this.tabla);
             this.panel1.Controls.Add(this.lblTipoAutomata);
             this.panel1.Location = new System.Drawing.Point(5, 107);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(581, 445);
+            this.panel1.Size = new System.Drawing.Size(581, 386);
             this.panel1.TabIndex = 0;
+            // 
+            // tabla
+            // 
+            this.tabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tabla.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Salidas});
+            this.tabla.Location = new System.Drawing.Point(17, 23);
+            this.tabla.Name = "tabla";
+            this.tabla.RowTemplate.Height = 24;
+            this.tabla.Size = new System.Drawing.Size(539, 335);
+            this.tabla.TabIndex = 3;
+            // 
+            // Salidas
+            // 
+            this.Salidas.Frozen = true;
+            this.Salidas.HeaderText = "Salidas";
+            this.Salidas.Name = "Salidas";
             // 
             // lblTipoAutomata
             // 
@@ -82,10 +100,37 @@
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Location = new System.Drawing.Point(0, 2);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(596, 97);
+            this.panel2.Size = new System.Drawing.Size(586, 97);
             this.panel2.TabIndex = 1;
+            // 
+            // btnAgregarTransicion
+            // 
+            this.btnAgregarTransicion.Location = new System.Drawing.Point(362, 38);
+            this.btnAgregarTransicion.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAgregarTransicion.Name = "btnAgregarTransicion";
+            this.btnAgregarTransicion.Size = new System.Drawing.Size(165, 36);
+            this.btnAgregarTransicion.TabIndex = 13;
+            this.btnAgregarTransicion.Text = "agregar";
+            this.btnAgregarTransicion.UseVisualStyleBackColor = true;
+            this.btnAgregarTransicion.Click += new System.EventHandler(this.btnAgregarTransicion_Click);
+            // 
+            // comboRespuesta
+            // 
+            this.comboRespuesta.FormattingEnabled = true;
+            this.comboRespuesta.Location = new System.Drawing.Point(270, 48);
+            this.comboRespuesta.Name = "comboRespuesta";
+            this.comboRespuesta.Size = new System.Drawing.Size(72, 26);
+            this.comboRespuesta.TabIndex = 12;
+            // 
+            // comboEstimulo
+            // 
+            this.comboEstimulo.FormattingEnabled = true;
+            this.comboEstimulo.Location = new System.Drawing.Point(192, 48);
+            this.comboEstimulo.Name = "comboEstimulo";
+            this.comboEstimulo.Size = new System.Drawing.Size(72, 26);
+            this.comboEstimulo.TabIndex = 11;
             // 
             // label2
             // 
@@ -97,45 +142,13 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Transición :";
             // 
-            // button3
+            // comboLlegada
             // 
-            this.button3.Location = new System.Drawing.Point(0, 550);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(76, 26);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "return";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // tabla
-            // 
-            this.tabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tabla.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Salidas});
-            this.tabla.Location = new System.Drawing.Point(17, 23);
-            this.tabla.Name = "tabla";
-            this.tabla.RowTemplate.Height = 24;
-            this.tabla.Size = new System.Drawing.Size(517, 413);
-            this.tabla.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 18);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Salida";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(108, 27);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 18);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Llegada";
+            this.comboLlegada.FormattingEnabled = true;
+            this.comboLlegada.Location = new System.Drawing.Point(111, 48);
+            this.comboLlegada.Name = "comboLlegada";
+            this.comboLlegada.Size = new System.Drawing.Size(72, 26);
+            this.comboLlegada.TabIndex = 10;
             // 
             // label7
             // 
@@ -146,14 +159,14 @@
             this.label7.TabIndex = 6;
             this.label7.Text = "Estímulo";
             // 
-            // label8
+            // label1
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(270, 27);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(72, 18);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Respuesta";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(30, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(45, 18);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Salida";
             // 
             // comboSalida
             // 
@@ -163,63 +176,63 @@
             this.comboSalida.Size = new System.Drawing.Size(72, 26);
             this.comboSalida.TabIndex = 9;
             // 
-            // comboLlegada
+            // label6
             // 
-            this.comboLlegada.FormattingEnabled = true;
-            this.comboLlegada.Location = new System.Drawing.Point(111, 48);
-            this.comboLlegada.Name = "comboLlegada";
-            this.comboLlegada.Size = new System.Drawing.Size(72, 26);
-            this.comboLlegada.TabIndex = 10;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(108, 27);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(55, 18);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Llegada";
             // 
-            // comboEstimulo
+            // label8
             // 
-            this.comboEstimulo.FormattingEnabled = true;
-            this.comboEstimulo.Location = new System.Drawing.Point(192, 48);
-            this.comboEstimulo.Name = "comboEstimulo";
-            this.comboEstimulo.Size = new System.Drawing.Size(72, 26);
-            this.comboEstimulo.TabIndex = 11;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(270, 27);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(72, 18);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Respuesta";
             // 
-            // comboRespuesta
+            // button3
             // 
-            this.comboRespuesta.FormattingEnabled = true;
-            this.comboRespuesta.Location = new System.Drawing.Point(270, 48);
-            this.comboRespuesta.Name = "comboRespuesta";
-            this.comboRespuesta.Size = new System.Drawing.Size(72, 26);
-            this.comboRespuesta.TabIndex = 12;
+            this.button3.Location = new System.Drawing.Point(0, 550);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(76, 26);
+            this.button3.TabIndex = 2;
+            this.button3.Text = "return";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // btnAgregarTransicion
+            // btnAutomataConexo
             // 
-            this.btnAgregarTransicion.Location = new System.Drawing.Point(362, 38);
-            this.btnAgregarTransicion.Margin = new System.Windows.Forms.Padding(4);
-            this.btnAgregarTransicion.Name = "btnAgregarTransicion";
-            this.btnAgregarTransicion.Size = new System.Drawing.Size(95, 36);
-            this.btnAgregarTransicion.TabIndex = 13;
-            this.btnAgregarTransicion.Text = "agregar";
-            this.btnAgregarTransicion.UseVisualStyleBackColor = true;
-            // 
-            // Salidas
-            // 
-            this.Salidas.Frozen = true;
-            this.Salidas.HeaderText = "Salidas";
-            this.Salidas.Name = "Salidas";
+            this.btnAutomataConexo.Location = new System.Drawing.Point(415, 490);
+            this.btnAutomataConexo.Name = "btnAutomataConexo";
+            this.btnAutomataConexo.Size = new System.Drawing.Size(171, 54);
+            this.btnAutomataConexo.TabIndex = 3;
+            this.btnAutomataConexo.Text = "Automata Conexo Equivalente";
+            this.btnAutomataConexo.UseVisualStyleBackColor = true;
+            this.btnAutomataConexo.Click += new System.EventHandler(this.btnAutomataConexo_Click);
             // 
             // VentanaAutomata
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 580);
+            this.Controls.Add(this.btnAutomataConexo);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "VentanaAutomata";
             this.Text = "VentanaAutomata";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tabla)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tabla)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -242,5 +255,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnAgregarTransicion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Salidas;
+        private System.Windows.Forms.Button btnAutomataConexo;
     }
 }
