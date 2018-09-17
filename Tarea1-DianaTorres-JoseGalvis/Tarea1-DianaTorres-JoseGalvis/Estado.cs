@@ -18,11 +18,15 @@ namespace Tarea1_DianaTorres_JoseGalvis
 
         private String valor;
 
+        private int indiceConjunto;
+
+        public int IndiceConjunto { get => indiceConjunto; set => indiceConjunto = value; }
 
         public Estado(String valor)
         {
             estaVisitado = false;
             this.valor = valor;
+            indiceConjunto = 0;
         }
 
         public Boolean isEstaVisitado()
