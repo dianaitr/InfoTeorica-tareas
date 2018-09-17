@@ -70,41 +70,49 @@ namespace Tarea1_DianaTorres_JoseGalvis
         //
         public void BFS()
         {
-
-
-            reestablecerEstados();
-
-            Estado estadoInicial = estados.First();
-            estadoInicial.setEstaVisitado(true);
-            Queue<string> cola = new Queue<string>();
-            cola.Enqueue(estadoInicial.getValor());
-            List<string> lista = new List<string>();
-
-            while (cola.Count != 0)
+            try
             {
-                string actual = cola.Dequeue();
-                lista.Add(actual);
-                List<string> aux = new List<string>();
+                reestablecerEstados();
 
-                string t = transiciones[actual] + "";
-                string[] transActuales = t.Split(',');
-                for (int i = 0; i < transActuales.Length; i++)
-                {
-                    aux.Add(transActuales[i]);
-                }
+                Estado estadoInicial = estados.First();
+                estadoInicial.setEstaVisitado(true);
+                Queue<string> cola = new Queue<string>();
+                cola.Enqueue(estadoInicial.getValor());
+                List<string> lista = new List<string>();
 
-                for (int i = 0; i < aux.Count; i++)
+                while (cola.Count != 0)
                 {
-                    string sig = aux.ElementAt(i);
-                    if (buscarEstado(sig).isEstaVisitado() == false)
+                    string actual = cola.Dequeue();
+                    lista.Add(actual);
+                    List<string> aux = new List<string>();
+
+                    string t = transiciones[actual] + "";
+                    string[] transActuales = t.Split(',');
+                    for (int i = 0; i < transActuales.Length; i++)
                     {
-                        buscarEstado(sig).setEstaVisitado(true);
-                        cola.Enqueue(sig);
+                        aux.Add(transActuales[i]);
                     }
 
+                    for (int i = 0; i < aux.Count; i++)
+                    {
+                        string sig = aux.ElementAt(i);
+                        if (buscarEstado(sig).isEstaVisitado() == false)
+                        {
+                            buscarEstado(sig).setEstaVisitado(true);
+                            cola.Enqueue(sig);
+                        }
 
+
+                    }
                 }
             }
+            catch(Exception ex)
+            {
+                throw new Exception("No se pudo encontrar el automata conexo equivalente. Intente de nuevo. ");
+            }
+
+            
+            
 
 
         }
