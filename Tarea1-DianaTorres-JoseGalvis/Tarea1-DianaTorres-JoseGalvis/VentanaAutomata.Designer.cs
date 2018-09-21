@@ -45,6 +45,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.btnAutomataConexo = new System.Windows.Forms.Button();
+            this.btnCompletarAutomata = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabla)).BeginInit();
             this.panel2.SuspendLayout();
@@ -83,7 +84,7 @@
             this.lblTipoAutomata.Location = new System.Drawing.Point(2, 0);
             this.lblTipoAutomata.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTipoAutomata.Name = "lblTipoAutomata";
-            this.lblTipoAutomata.Size = new System.Drawing.Size(132, 18);
+            this.lblTipoAutomata.Size = new System.Drawing.Size(115, 14);
             this.lblTipoAutomata.TabIndex = 2;
             this.lblTipoAutomata.Text = "Autómata de Moore";
             // 
@@ -121,7 +122,7 @@
             this.comboRespuesta.FormattingEnabled = true;
             this.comboRespuesta.Location = new System.Drawing.Point(270, 48);
             this.comboRespuesta.Name = "comboRespuesta";
-            this.comboRespuesta.Size = new System.Drawing.Size(72, 26);
+            this.comboRespuesta.Size = new System.Drawing.Size(72, 22);
             this.comboRespuesta.TabIndex = 12;
             // 
             // comboEstimulo
@@ -129,7 +130,7 @@
             this.comboEstimulo.FormattingEnabled = true;
             this.comboEstimulo.Location = new System.Drawing.Point(192, 48);
             this.comboEstimulo.Name = "comboEstimulo";
-            this.comboEstimulo.Size = new System.Drawing.Size(72, 26);
+            this.comboEstimulo.Size = new System.Drawing.Size(72, 22);
             this.comboEstimulo.TabIndex = 11;
             // 
             // label2
@@ -138,7 +139,7 @@
             this.label2.Location = new System.Drawing.Point(7, 0);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 18);
+            this.label2.Size = new System.Drawing.Size(69, 14);
             this.label2.TabIndex = 5;
             this.label2.Text = "Transición :";
             // 
@@ -147,7 +148,7 @@
             this.comboLlegada.FormattingEnabled = true;
             this.comboLlegada.Location = new System.Drawing.Point(111, 48);
             this.comboLlegada.Name = "comboLlegada";
-            this.comboLlegada.Size = new System.Drawing.Size(72, 26);
+            this.comboLlegada.Size = new System.Drawing.Size(72, 22);
             this.comboLlegada.TabIndex = 10;
             // 
             // label7
@@ -155,7 +156,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(189, 27);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(61, 18);
+            this.label7.Size = new System.Drawing.Size(54, 14);
             this.label7.TabIndex = 6;
             this.label7.Text = "Estímulo";
             // 
@@ -164,7 +165,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(30, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 18);
+            this.label1.Size = new System.Drawing.Size(42, 14);
             this.label1.TabIndex = 4;
             this.label1.Text = "Salida";
             // 
@@ -173,7 +174,7 @@
             this.comboSalida.FormattingEnabled = true;
             this.comboSalida.Location = new System.Drawing.Point(33, 48);
             this.comboSalida.Name = "comboSalida";
-            this.comboSalida.Size = new System.Drawing.Size(72, 26);
+            this.comboSalida.Size = new System.Drawing.Size(72, 22);
             this.comboSalida.TabIndex = 9;
             // 
             // label6
@@ -181,7 +182,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(108, 27);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 18);
+            this.label6.Size = new System.Drawing.Size(50, 14);
             this.label6.TabIndex = 5;
             this.label6.Text = "Llegada";
             // 
@@ -190,7 +191,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(270, 27);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(72, 18);
+            this.label8.Size = new System.Drawing.Size(65, 14);
             this.label8.TabIndex = 7;
             this.label8.Text = "Respuesta";
             // 
@@ -213,13 +214,25 @@
             this.btnAutomataConexo.TabIndex = 3;
             this.btnAutomataConexo.Text = "Automata Conexo Equivalente";
             this.btnAutomataConexo.UseVisualStyleBackColor = true;
+            this.btnAutomataConexo.Visible = false;
             this.btnAutomataConexo.Click += new System.EventHandler(this.btnAutomataConexo_Click);
+            // 
+            // btnCompletarAutomata
+            // 
+            this.btnCompletarAutomata.Location = new System.Drawing.Point(168, 490);
+            this.btnCompletarAutomata.Name = "btnCompletarAutomata";
+            this.btnCompletarAutomata.Size = new System.Drawing.Size(112, 54);
+            this.btnCompletarAutomata.TabIndex = 4;
+            this.btnCompletarAutomata.Text = "Completar automata";
+            this.btnCompletarAutomata.UseVisualStyleBackColor = true;
+            this.btnCompletarAutomata.Click += new System.EventHandler(this.btnCompletarAutomata_Click);
             // 
             // VentanaAutomata
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 580);
+            this.Controls.Add(this.btnCompletarAutomata);
             this.Controls.Add(this.btnAutomataConexo);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.panel2);
@@ -256,5 +269,6 @@
         private System.Windows.Forms.Button btnAgregarTransicion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Salidas;
         private System.Windows.Forms.Button btnAutomataConexo;
+        private System.Windows.Forms.Button btnCompletarAutomata;
     }
 }

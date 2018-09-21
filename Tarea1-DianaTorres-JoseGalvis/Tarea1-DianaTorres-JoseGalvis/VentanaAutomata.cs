@@ -295,5 +295,45 @@ namespace Tarea1_DianaTorres_JoseGalvis
             actualizarAutomataTabla();
             //asignarEstadosConRespuestas();
         }
+
+        private void btnCompletarAutomata_Click(object sender, EventArgs e)
+        {
+
+            Hashtable hTransiciones = new Hashtable();
+            Hashtable hRespuestas = new Hashtable();
+
+
+            for (int i = 0; i < tabla.RowCount; i++)
+            {
+                string estado = tabla.Rows[i].Cells[0].Value + "";
+                string transi = "";
+                string resp = "";
+                for (int j = 1; j < tabla.Rows[i].Cells.Count; j++)
+                {
+
+
+                    if (j != tabla.Rows[i].Cells.Count - 1)
+                    {
+                        transi += tabla.Rows[i].Cells[j].Value + "";
+                    }
+                    else
+                    {
+                        resp= tabla.Rows[i].Cells[j].Value + "";
+                    }
+
+                    
+                }
+                
+                hTransiciones.Add(estado, transi);
+                hRespuestas.Add(estado, resp);
+                
+
+            }
+
+            automata.EstadosConRespuestas = hRespuestas;
+            automata.Transiciones = hTransiciones;
+
+            btnAutomataConexo.Show();
+        }
     }
 }
