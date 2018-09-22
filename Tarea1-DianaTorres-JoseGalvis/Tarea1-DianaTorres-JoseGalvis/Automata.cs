@@ -136,6 +136,8 @@ namespace Tarea1_DianaTorres_JoseGalvis
 
         public Estado buscarEstado(string valor)
         {
+
+            //hollaaa
             
             return estados.Where(v => v.getValor().Equals(valor)).First();
         }
