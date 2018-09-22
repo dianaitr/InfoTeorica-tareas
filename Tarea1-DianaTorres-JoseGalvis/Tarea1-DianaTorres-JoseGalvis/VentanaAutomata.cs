@@ -319,7 +319,7 @@ namespace Tarea1_DianaTorres_JoseGalvis
             Hashtable hRespuestas = new Hashtable();
 
 
-            for (int i = 0; i < tabla.RowCount; i++)
+            for (int i = 0; i < automata.Estados.Count; i++)
             {
                 string estado = tabla.Rows[i].Cells[0].Value + "";
                 string transi = "";
@@ -346,7 +346,7 @@ namespace Tarea1_DianaTorres_JoseGalvis
                     {
                         string d = tabla.Rows[i].Cells[j].Value+"";
                         
-                        string[] datos = d.Split(' ') ;
+                        string[] datos = d.ToString().Split(' ') ;
                         transi += datos[0];
                         resp += datos[1];
 
