@@ -371,5 +371,10 @@ namespace Tarea1_DianaTorres_JoseGalvis
 
             btnAutomataConexo.Show();
         }
+
+        private void btn_automataMinimo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

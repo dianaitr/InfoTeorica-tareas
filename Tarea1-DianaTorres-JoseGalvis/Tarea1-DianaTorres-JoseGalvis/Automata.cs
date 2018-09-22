@@ -112,6 +112,7 @@ namespace Tarea1_DianaTorres_JoseGalvis
                 
             List<Estado> estadosMalos = estados.Where(e => e.isEstaVisitado() == false).ToList();
 
+            actualizarHashtables(estadosMalos);
             estados = estadosConexos;
 
             
@@ -156,6 +157,20 @@ namespace Tarea1_DianaTorres_JoseGalvis
             }
         }
 
+        public void actualizarHashtables(List<Estado> estadosBorrar)
+        {
+            foreach(Estado est in estadosBorrar)
+            {
+                for(int i=0; i<Transiciones.Count; i++)
+                {
+                    if (Transiciones.ContainsKey(est.getValor()))
+                    {
+                        Transiciones.Remove(est.getValor());
+                    }
+                    
+                }
+            }
+        }
 
         /// <summary>
         /// PARTICIONAMIENTO
@@ -179,7 +194,7 @@ namespace Tarea1_DianaTorres_JoseGalvis
            
 
             //ver while
-            while (particionAnterior != particion)
+            while (particionAnterior != particion && !particionAnterior.Equals( particion))
             {
                 //recorro cada conjunto del particionamiento
                 //i es el indice del conjunto actual

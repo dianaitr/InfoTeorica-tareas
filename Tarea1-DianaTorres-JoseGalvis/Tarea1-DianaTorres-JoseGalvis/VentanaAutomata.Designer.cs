@@ -46,9 +46,16 @@
             this.button3 = new System.Windows.Forms.Button();
             this.btnAutomataConexo = new System.Windows.Forms.Button();
             this.btnCompletarAutomata = new System.Windows.Forms.Button();
+            this.btn_automataMinimo = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.tablaParticionamiento = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabla)).BeginInit();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaParticionamiento)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -58,7 +65,7 @@
             this.panel1.Location = new System.Drawing.Point(5, 107);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(581, 386);
+            this.panel1.Size = new System.Drawing.Size(522, 335);
             this.panel1.TabIndex = 0;
             // 
             // tabla
@@ -69,7 +76,7 @@
             this.tabla.Location = new System.Drawing.Point(17, 23);
             this.tabla.Name = "tabla";
             this.tabla.RowTemplate.Height = 24;
-            this.tabla.Size = new System.Drawing.Size(539, 335);
+            this.tabla.Size = new System.Drawing.Size(467, 282);
             this.tabla.TabIndex = 3;
             // 
             // Salidas
@@ -103,7 +110,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 2);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(586, 97);
+            this.panel2.Size = new System.Drawing.Size(527, 97);
             this.panel2.TabIndex = 1;
             // 
             // btnAgregarTransicion
@@ -111,7 +118,7 @@
             this.btnAgregarTransicion.Location = new System.Drawing.Point(362, 38);
             this.btnAgregarTransicion.Margin = new System.Windows.Forms.Padding(4);
             this.btnAgregarTransicion.Name = "btnAgregarTransicion";
-            this.btnAgregarTransicion.Size = new System.Drawing.Size(165, 36);
+            this.btnAgregarTransicion.Size = new System.Drawing.Size(149, 36);
             this.btnAgregarTransicion.TabIndex = 13;
             this.btnAgregarTransicion.Text = "agregar";
             this.btnAgregarTransicion.UseVisualStyleBackColor = true;
@@ -197,7 +204,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(0, 550);
+            this.button3.Location = new System.Drawing.Point(-4, 521);
             this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(76, 26);
@@ -208,9 +215,9 @@
             // 
             // btnAutomataConexo
             // 
-            this.btnAutomataConexo.Location = new System.Drawing.Point(415, 490);
+            this.btnAutomataConexo.Location = new System.Drawing.Point(140, 449);
             this.btnAutomataConexo.Name = "btnAutomataConexo";
-            this.btnAutomataConexo.Size = new System.Drawing.Size(171, 54);
+            this.btnAutomataConexo.Size = new System.Drawing.Size(125, 54);
             this.btnAutomataConexo.TabIndex = 3;
             this.btnAutomataConexo.Text = "Automata Conexo Equivalente";
             this.btnAutomataConexo.UseVisualStyleBackColor = true;
@@ -219,7 +226,7 @@
             // 
             // btnCompletarAutomata
             // 
-            this.btnCompletarAutomata.Location = new System.Drawing.Point(168, 490);
+            this.btnCompletarAutomata.Location = new System.Drawing.Point(22, 449);
             this.btnCompletarAutomata.Name = "btnCompletarAutomata";
             this.btnCompletarAutomata.Size = new System.Drawing.Size(112, 54);
             this.btnCompletarAutomata.TabIndex = 4;
@@ -227,11 +234,60 @@
             this.btnCompletarAutomata.UseVisualStyleBackColor = true;
             this.btnCompletarAutomata.Click += new System.EventHandler(this.btnCompletarAutomata_Click);
             // 
+            // btn_automataMinimo
+            // 
+            this.btn_automataMinimo.Location = new System.Drawing.Point(540, 449);
+            this.btn_automataMinimo.Name = "btn_automataMinimo";
+            this.btn_automataMinimo.Size = new System.Drawing.Size(123, 54);
+            this.btn_automataMinimo.TabIndex = 5;
+            this.btn_automataMinimo.Text = "Automata minimo equivalente";
+            this.btn_automataMinimo.UseVisualStyleBackColor = true;
+            this.btn_automataMinimo.Click += new System.EventHandler(this.btn_automataMinimo_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.tablaParticionamiento);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Location = new System.Drawing.Point(535, 107);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(522, 335);
+            this.panel3.TabIndex = 6;
+            // 
+            // tablaParticionamiento
+            // 
+            this.tablaParticionamiento.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tablaParticionamiento.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1});
+            this.tablaParticionamiento.Location = new System.Drawing.Point(17, 23);
+            this.tablaParticionamiento.Name = "tablaParticionamiento";
+            this.tablaParticionamiento.RowTemplate.Height = 24;
+            this.tablaParticionamiento.Size = new System.Drawing.Size(467, 282);
+            this.tablaParticionamiento.TabIndex = 3;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.Frozen = true;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Salidas";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(2, 0);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(115, 14);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Autómata de Moore";
+            // 
             // VentanaAutomata
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(982, 580);
+            this.ClientSize = new System.Drawing.Size(1074, 550);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.btn_automataMinimo);
             this.Controls.Add(this.btnCompletarAutomata);
             this.Controls.Add(this.btnAutomataConexo);
             this.Controls.Add(this.button3);
@@ -246,6 +302,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.tabla)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaParticionamiento)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -270,5 +329,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Salidas;
         private System.Windows.Forms.Button btnAutomataConexo;
         private System.Windows.Forms.Button btnCompletarAutomata;
+        private System.Windows.Forms.Button btn_automataMinimo;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.DataGridView tablaParticionamiento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.Label label3;
     }
 }
