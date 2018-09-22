@@ -156,6 +156,10 @@ namespace Tarea1_DianaTorres_JoseGalvis
                             transiciones[comboSalida] = llegadas;
 
                             agregarTransicionTabla(comboLlegada.Text);
+
+                            
+
+                            
                         }
                     }
                     
@@ -165,6 +169,7 @@ namespace Tarea1_DianaTorres_JoseGalvis
                 {
                     transiciones.Add(comboSalida.Text, comboLlegada.Text);
                     agregarTransicionTabla(comboLlegada.Text);
+                    
 
                 }
                 
@@ -226,20 +231,31 @@ namespace Tarea1_DianaTorres_JoseGalvis
 
         //}
 
+
+
+
+        
+
+
         public void agregarTransicionTabla(string llegada)
         {
             if (automata.Tipo.Equals("MEALY"))
             {
                 //agrega a tabla
-                
-                string est= columnsNames[comboEstimulo.Text].ToString();
+
+                string est = columnsNames[comboEstimulo.Text].ToString();
                 int indexEstimulo = Int32.Parse(est);
 
                 string salida = rowsNames[comboSalida.Text].ToString();
-                int indexSalida= Int32.Parse(salida);
-                
-                tabla.Rows[indexSalida].Cells[indexEstimulo].Value = llegada;
+                int indexSalida = Int32.Parse(salida);
+
+                tabla.Rows[indexSalida].Cells[indexEstimulo].Value = llegada+" "+comboRespuesta.Text;
                 //falta concatenar con rptas respectivas
+
+
+                
+
+
             }
             else if (automata.Tipo.Equals("MOORE"))
             {
@@ -269,8 +285,8 @@ namespace Tarea1_DianaTorres_JoseGalvis
                   
 
                 }
-                
-                
+
+
             }
         }
 
@@ -311,14 +327,34 @@ namespace Tarea1_DianaTorres_JoseGalvis
                 for (int j = 1; j < tabla.Rows[i].Cells.Count; j++)
                 {
 
-
-                    if (j != tabla.Rows[i].Cells.Count - 1)
+                    if (automata.Tipo.Equals("MOORE"))
                     {
-                        transi += tabla.Rows[i].Cells[j].Value + "";
+                        if (j != tabla.Rows[i].Cells.Count - 1)
+                        {
+                            transi += tabla.Rows[i].Cells[j].Value + "";
+                            if (j<tabla.Rows[i].Cells.Count-2)
+                            {
+                                transi += ",";
+                            }
+                        }
+                        else
+                        {
+                            resp = tabla.Rows[i].Cells[j].Value + "";
+                        }
                     }
                     else
                     {
-                        resp= tabla.Rows[i].Cells[j].Value + "";
+                        string d = tabla.Rows[i].Cells[j].Value+"";
+                        
+                        string[] datos = d.Split(' ') ;
+                        transi += datos[0];
+                        resp += datos[1];
+
+                        if (j < tabla.Rows[i].Cells.Count - 1)
+                        {
+                            transi += ",";
+                            resp += ",";
+                        }
                     }
 
                     

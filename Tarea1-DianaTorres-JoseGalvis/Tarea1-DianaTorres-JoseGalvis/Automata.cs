@@ -96,6 +96,7 @@ namespace Tarea1_DianaTorres_JoseGalvis
                     for (int i = 0; i < aux.Count; i++)
                     {
                         string sig = aux.ElementAt(i);
+                        
                         if (buscarEstado(sig).isEstaVisitado() == false)
                         {
                             buscarEstado(sig).setEstaVisitado(true);
@@ -106,22 +107,20 @@ namespace Tarea1_DianaTorres_JoseGalvis
                     }
                 }
 
-                //for(int i=0;i<estados.Count;i++)
-                //{
-                    
-                //    if (!estados.ElementAt(i).isEstaVisitado())
-                //    {
-                //        estados.RemoveAt(i);
-                //    }
-                //}
+                
+            List<Estado> estadosConexos = estados.Where(e => e.isEstaVisitado() == true).ToList();
+                
+            List<Estado> estadosMalos = estados.Where(e => e.isEstaVisitado() == false).ToList();
 
-                List<Estado> e1 = estados.Where(e => e.isEstaVisitado() == true).ToList();
-                estados = e1;
-        //}
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception("No se pudo encontrar el automata conexo equivalente. Intente de nuevo. ");
-        //    }
+            estados = estadosConexos;
+
+            
+
+            //}
+            //    catch (Exception ex)
+            //    {
+            //        throw new Exception("No se pudo encontrar el automata conexo equivalente. Intente de nuevo. ");
+            //    }
 
 
 
@@ -137,7 +136,7 @@ namespace Tarea1_DianaTorres_JoseGalvis
         public Estado buscarEstado(string valor)
         {
 
-            //hollaaa
+            
             
             return estados.Where(v => v.getValor().Equals(valor)).First();
         }
