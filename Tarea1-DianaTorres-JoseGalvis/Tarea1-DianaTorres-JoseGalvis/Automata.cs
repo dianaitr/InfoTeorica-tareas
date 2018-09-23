@@ -38,7 +38,7 @@ namespace Tarea1_DianaTorres_JoseGalvis
             this.Estimulos = estimulos;
             this.Respuestas = rpta;
 
-            inicializarEstadosConRespuestas();
+            //inicializarEstadosConRespuestas();
         }
 
         
@@ -219,17 +219,18 @@ namespace Tarea1_DianaTorres_JoseGalvis
             for (int i=0; i < lista.Count; i++)
             {
                 List<string> conjunto = new List<string>();
-                int j = 0;
+                
 
                 foreach (Estado e in estados)
                 {
                     if (e.IndiceConjunto == i)
                     {                        
-                        conjunto[j] = e.getValor();
-                        j++;
+                        conjunto.Add( e.getValor());
+                       
                     }
 
                 }
+                particion.Add(conjunto);
             }
             return particion;
             
@@ -238,18 +239,18 @@ namespace Tarea1_DianaTorres_JoseGalvis
         //Particiona 1 conjunto especifico de estados segun sus transiciones
         private void particionUnConjunto(List<string> conjunto)
         {
-            
+            Boolean next = false;
             foreach(string eActual in conjunto)
             {
                 
                 String[] tActual = transiciones[eActual].ToString().Split(',');
-
+                
                 foreach(string eSiguiente in conjunto)
                 {
                     
-                    String[] tSiguiente = transiciones[tActual].ToString().Split(',');
-
-                    for(int i=0; i < estimulos.Count; i++)
+                    String[] tSiguiente = transiciones[eSiguiente].ToString().Split(',');
+                    next = false;
+                    for(int i=0; i < estimulos.Count && next==false; i++)
                     {
                         Estado estadoActual = buscarEstado(tActual[i]);
                         Estado estadoSiguiente = buscarEstado(tSiguiente[i]);
@@ -257,7 +258,7 @@ namespace Tarea1_DianaTorres_JoseGalvis
                         if (estadoActual.IndiceConjunto != estadoSiguiente.IndiceConjunto)
                         {
                             estadoSiguiente.IndiceConjunto += 1;
-                            break;
+                            next = true;
                         }
                     }
                     
@@ -294,17 +295,39 @@ namespace Tarea1_DianaTorres_JoseGalvis
                 }
             }else if (tipo.Equals("MOORE"))
             {
-                int i = 0;
-                foreach(string respuesta in EstadosConRespuestas)
-                {
-                    string[] esta = EstadosConRespuestas[respuesta].ToString().Split(',');
-                    int j = 0;
-                    foreach (string e in esta)
-                    {
+                //int i = 0;
+                //foreach(string respuesta in EstadosConRespuestas)
+                //{
+                //    string[] esta = EstadosConRespuestas[respuesta].ToString().Split(',');
+                //    int j = 0;
+                //    foreach (string e in esta)
+                //    {
 
-                        particion[i][j] = e;
-                        buscarEstado(e).IndiceConjunto = i;
-                        j++;
+                //        particion[i][j] = e;
+                //        buscarEstado(e).IndiceConjunto = i;
+                //        j++;
+                //    }
+                //    i++;
+                //}
+
+                int i = 0;
+                foreach (Estado eActual in Estados)
+                {
+
+                    string resActual = estadosConRespuestas[eActual.getValor()].ToString();
+                    
+                    List<string> listita = new List<string>();
+                    particion.Add(listita);
+                    foreach (Estado eSiguiente in Estados)
+                    {
+                        if (EstadosConRespuestas[eActual.getValor()].Equals(estadosConRespuestas[eSiguiente.getValor()]))
+                        {
+
+                            listita.Add(eSiguiente.getValor());
+                             
+                            eSiguiente.IndiceConjunto = i;
+                           
+                        }
                     }
                     i++;
                 }
