@@ -51,6 +51,8 @@
             this.tablaParticionamiento = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
+            this.particionamientoFinal = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabla)).BeginInit();
             this.panel2.SuspendLayout();
@@ -91,7 +93,7 @@
             this.lblTipoAutomata.Location = new System.Drawing.Point(2, 0);
             this.lblTipoAutomata.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTipoAutomata.Name = "lblTipoAutomata";
-            this.lblTipoAutomata.Size = new System.Drawing.Size(115, 14);
+            this.lblTipoAutomata.Size = new System.Drawing.Size(132, 18);
             this.lblTipoAutomata.TabIndex = 2;
             this.lblTipoAutomata.Text = "Autómata de Moore";
             // 
@@ -129,7 +131,7 @@
             this.comboRespuesta.FormattingEnabled = true;
             this.comboRespuesta.Location = new System.Drawing.Point(270, 48);
             this.comboRespuesta.Name = "comboRespuesta";
-            this.comboRespuesta.Size = new System.Drawing.Size(72, 22);
+            this.comboRespuesta.Size = new System.Drawing.Size(72, 26);
             this.comboRespuesta.TabIndex = 12;
             // 
             // comboEstimulo
@@ -137,7 +139,7 @@
             this.comboEstimulo.FormattingEnabled = true;
             this.comboEstimulo.Location = new System.Drawing.Point(192, 48);
             this.comboEstimulo.Name = "comboEstimulo";
-            this.comboEstimulo.Size = new System.Drawing.Size(72, 22);
+            this.comboEstimulo.Size = new System.Drawing.Size(72, 26);
             this.comboEstimulo.TabIndex = 11;
             // 
             // label2
@@ -146,7 +148,7 @@
             this.label2.Location = new System.Drawing.Point(7, 0);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 14);
+            this.label2.Size = new System.Drawing.Size(77, 18);
             this.label2.TabIndex = 5;
             this.label2.Text = "Transición :";
             // 
@@ -155,7 +157,7 @@
             this.comboLlegada.FormattingEnabled = true;
             this.comboLlegada.Location = new System.Drawing.Point(111, 48);
             this.comboLlegada.Name = "comboLlegada";
-            this.comboLlegada.Size = new System.Drawing.Size(72, 22);
+            this.comboLlegada.Size = new System.Drawing.Size(72, 26);
             this.comboLlegada.TabIndex = 10;
             // 
             // label7
@@ -163,7 +165,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(189, 27);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(54, 14);
+            this.label7.Size = new System.Drawing.Size(61, 18);
             this.label7.TabIndex = 6;
             this.label7.Text = "Estímulo";
             // 
@@ -172,7 +174,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(30, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 14);
+            this.label1.Size = new System.Drawing.Size(45, 18);
             this.label1.TabIndex = 4;
             this.label1.Text = "Salida";
             // 
@@ -181,7 +183,7 @@
             this.comboSalida.FormattingEnabled = true;
             this.comboSalida.Location = new System.Drawing.Point(33, 48);
             this.comboSalida.Name = "comboSalida";
-            this.comboSalida.Size = new System.Drawing.Size(72, 22);
+            this.comboSalida.Size = new System.Drawing.Size(72, 26);
             this.comboSalida.TabIndex = 9;
             // 
             // label6
@@ -189,7 +191,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(108, 27);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 14);
+            this.label6.Size = new System.Drawing.Size(55, 18);
             this.label6.TabIndex = 5;
             this.label6.Text = "Llegada";
             // 
@@ -198,7 +200,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(270, 27);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(65, 14);
+            this.label8.Size = new System.Drawing.Size(72, 18);
             this.label8.TabIndex = 7;
             this.label8.Text = "Respuesta";
             // 
@@ -277,15 +279,34 @@
             this.label3.Location = new System.Drawing.Point(2, 0);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(115, 14);
+            this.label3.Size = new System.Drawing.Size(132, 18);
             this.label3.TabIndex = 2;
             this.label3.Text = "Autómata de Moore";
             // 
+            // particionamientoFinal
+            // 
+            this.particionamientoFinal.Location = new System.Drawing.Point(612, 12);
+            this.particionamientoFinal.Multiline = true;
+            this.particionamientoFinal.Name = "particionamientoFinal";
+            this.particionamientoFinal.Size = new System.Drawing.Size(426, 58);
+            this.particionamientoFinal.TabIndex = 7;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(541, 29);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(56, 18);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "PFinal : ";
+            // 
             // VentanaAutomata
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1074, 550);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.particionamientoFinal);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.btn_automataMinimo);
             this.Controls.Add(this.btnCompletarAutomata);
@@ -306,6 +327,7 @@
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaParticionamiento)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -334,5 +356,7 @@
         private System.Windows.Forms.DataGridView tablaParticionamiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox particionamientoFinal;
+        private System.Windows.Forms.Label label4;
     }
 }

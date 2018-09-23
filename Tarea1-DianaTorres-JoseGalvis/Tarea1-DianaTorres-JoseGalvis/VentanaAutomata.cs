@@ -25,8 +25,8 @@ namespace Tarea1_DianaTorres_JoseGalvis
             automata = au;
             inicializarAutomataEnPantalla();
             columnasTabla();
-            
 
+            btn_automataMinimo.Enabled = false;
 
         }
 
@@ -181,54 +181,7 @@ namespace Tarea1_DianaTorres_JoseGalvis
             
         }
         
-        //Este metodo asigna las respuestas a su estados o vice versa segun el tipo (para obtener 1er particion) 
-    //se debe hacer despues del bfs
-        //public void asignarEstadosConRespuestas()
-        //{
-        //    Estado estado = new Estado(comboSalida.Text);
-        //    string respuesta = comboRespuesta.Text;
-
-        //    if (automata.Tipo.Equals("MOORE"))
-        //    {
-        //        if(!automata.EstadosConRespuestas[respuesta].Equals("")){
-        //            string actualizarEstados = automata.EstadosConRespuestas[respuesta] +","+ estado.getValor();
-        //            automata.EstadosConRespuestas[respuesta] = actualizarEstados;
-        //        }
-        //        else
-        //        {
-        //           automata.EstadosConRespuestas[respuesta] = estado.getValor();
-        //        }
-
-        //    }else if (automata.Tipo.Equals("MEALY"))
-        //    {
-                
-
-        //        if (!automata.EstadosConRespuestas[estado].Equals(""))
-        //        {
-        //            string[] valoresRespuestas = automata.EstadosConRespuestas[estado].ToString().Split(',');
-        //            Boolean igual = false;
-        //            for (int i = 0; i < valoresRespuestas.Length; i++)
-        //            {
-        //                if (valoresRespuestas[0].Equals(comboLlegada.Text))
-        //                {
-        //                    igual = true;
-        //                    throw new Exception("La transición ya existe. Cambie el estado de llegada.");
-        //                }
-        //                break;
-        //            }
-
-        //            if (igual == false)
-        //            {
-        //                string actualizarRespuestas = automata.EstadosConRespuestas[estado] + "," + respuesta;
-        //                automata.EstadosConRespuestas[estado] = actualizarRespuestas;
-        //            }
-        //        }
-        //        else
-        //        {
-        //            automata.EstadosConRespuestas[estado] = respuesta;
-        //        }
-        //    }
-
+      
         //}
 
 
@@ -346,6 +299,7 @@ namespace Tarea1_DianaTorres_JoseGalvis
             automata.BFS();
             actualizarAutomataTabla();
             //asignarEstadosConRespuestas();
+            btn_automataMinimo.Enabled = true;
         }
 
         private void btnCompletarAutomata_Click(object sender, EventArgs e)
@@ -410,6 +364,24 @@ namespace Tarea1_DianaTorres_JoseGalvis
 
         private void btn_automataMinimo_Click(object sender, EventArgs e)
         {
+            List<List<string>> particionFinal = automata.particionamiento();
+
+            string partic = "";
+            string conjunt = "";
+            foreach(List<string> conjunto in particionFinal)
+            {
+                partic += conjunt;
+                conjunt = "";
+                conjunt += "{";
+               for(int i=0; i < conjunto.Count; i++)
+                {
+                    string estado = conjunto[i];
+                    conjunt += estado + ",";
+                }
+                conjunt += "}";
+            }
+
+            particionamientoFinal.Text = partic;
 
         }
     }
