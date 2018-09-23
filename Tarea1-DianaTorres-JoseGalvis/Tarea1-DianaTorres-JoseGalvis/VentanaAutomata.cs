@@ -39,24 +39,28 @@ namespace Tarea1_DianaTorres_JoseGalvis
                 columnsNames.Add(tabla.Columns[i].HeaderText + "", i);
             }
         }
-        
+
 
         public void inicializarAutomataEnPantalla()
         {
-            if (automata.Tipo.Equals("MEALY")){ lblTipoAutomata.Text = "Tabla de transiciones de máquina de estado Mealy";
-                
+            if (automata.Tipo.Equals("MEALY"))
+            {
+                lblTipoAutomata.Text = "Tabla de transiciones de máquina de estado Mealy";
+
             }
-            else if (automata.Tipo.Equals("MOORE")) { lblTipoAutomata.Text = "Tabla de transiciones de máquina de estado Moore";
-                
+            else if (automata.Tipo.Equals("MOORE"))
+            {
+                lblTipoAutomata.Text = "Tabla de transiciones de máquina de estado Moore";
+
             }
-            
+
             iniciarCombosBox();
             iniciarTabla();
         }
 
         public void iniciarTabla()
         {
-            foreach(string estimulo in automata.Estimulos)
+            foreach (string estimulo in automata.Estimulos)
             {
                 DataGridViewTextBoxColumn columna = new DataGridViewTextBoxColumn();
                 columna.HeaderText = estimulo;
@@ -66,7 +70,7 @@ namespace Tarea1_DianaTorres_JoseGalvis
             }
             if (automata.Tipo.Equals("MOORE"))
             {
-                DataGridViewTextBoxColumn column= new DataGridViewTextBoxColumn();
+                DataGridViewTextBoxColumn column = new DataGridViewTextBoxColumn();
                 column.HeaderText = "Respuesta";
                 column.Width = 80;
 
@@ -75,7 +79,7 @@ namespace Tarea1_DianaTorres_JoseGalvis
 
             rowsNames = new Hashtable();
             int i = 0;
-            foreach(Estado estado in automata.Estados)
+            foreach (Estado estado in automata.Estados)
             {
                 tabla.Rows.Add(estado.getValor());
 
@@ -87,13 +91,13 @@ namespace Tarea1_DianaTorres_JoseGalvis
 
         public void iniciarCombosBox()
         {
-            foreach(Estado es in automata.Estados)
+            foreach (Estado es in automata.Estados)
             {
                 comboSalida.Items.Add(es.getValor());
                 comboLlegada.Items.Add(es.getValor());
             }
 
-            foreach(string est in automata.Estimulos)
+            foreach (string est in automata.Estimulos)
             {
                 comboEstimulo.Items.Add(est);
             }
@@ -102,10 +106,10 @@ namespace Tarea1_DianaTorres_JoseGalvis
             {
                 comboRespuesta.Items.Add(rpta);
             };
-        
+
         }
 
-        
+
 
         public Automata Automata { get => automata; set => automata = value; }
 
@@ -122,12 +126,12 @@ namespace Tarea1_DianaTorres_JoseGalvis
                 Hashtable transiciones = automata.Transiciones;
                 if (transiciones.ContainsKey(comboSalida.Text))
                 {
-                    string[] valoresT = transiciones[comboSalida.Text].ToString(). Split(',');
-                       string est = columnsNames[comboEstimulo.Text].ToString();
-                        int indexEstimulo = Int32.Parse(est);
+                    string[] valoresT = transiciones[comboSalida.Text].ToString().Split(',');
+                    string est = columnsNames[comboEstimulo.Text].ToString();
+                    int indexEstimulo = Int32.Parse(est);
 
-                        string salida = rowsNames[comboSalida.Text].ToString();
-                        int indexSalida = Int32.Parse(salida);
+                    string salida = rowsNames[comboSalida.Text].ToString();
+                    int indexSalida = Int32.Parse(salida);
 
                     Boolean estaLlena = false;
                     if (tabla.Rows[indexSalida].Cells[indexEstimulo].Value != null)
@@ -157,37 +161,37 @@ namespace Tarea1_DianaTorres_JoseGalvis
 
                             agregarTransicionTabla(comboLlegada.Text);
 
-                            
 
-                            
+
+
                         }
                     }
-                    
-                    
+
+
                 }
                 else
                 {
                     transiciones.Add(comboSalida.Text, comboLlegada.Text);
                     agregarTransicionTabla(comboLlegada.Text);
-                    
+
 
                 }
-                
+
             }
-            catch(Exception ex )
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            
+
         }
-        
-      
+
+
         //}
 
 
 
 
-        
+
 
 
         public void agregarTransicionTabla(string llegada)
@@ -202,11 +206,11 @@ namespace Tarea1_DianaTorres_JoseGalvis
                 string salida = rowsNames[comboSalida.Text].ToString();
                 int indexSalida = Int32.Parse(salida);
 
-                tabla.Rows[indexSalida].Cells[indexEstimulo].Value = llegada+" "+comboRespuesta.Text;
+                tabla.Rows[indexSalida].Cells[indexEstimulo].Value = llegada + " " + comboRespuesta.Text;
                 //falta concatenar con rptas respectivas
 
 
-                
+
 
 
             }
@@ -225,17 +229,17 @@ namespace Tarea1_DianaTorres_JoseGalvis
                 if (tabla.Rows[indexSalida].Cells[indexrespuesta].Value != null && !tabla.Rows[indexSalida].Cells[indexrespuesta].Value.Equals(comboRespuesta.Text))
                 {
                     throw new Exception("En Moore, la respuesta no varía. Ingrese una transición válida");
-                  
+
                 }
                 else
                 {
                     //agrega a tabla
-                        
+
                     tabla.Rows[indexSalida].Cells[indexEstimulo].Value = llegada;
 
                     tabla.Rows[indexSalida].Cells[indexrespuesta].Value = comboRespuesta.Text;
 
-                  
+
 
                 }
 
@@ -246,23 +250,23 @@ namespace Tarea1_DianaTorres_JoseGalvis
         public void actualizarAutomataTabla()
         {
             tabla.Rows.Clear();
-            
-            foreach(Estado e in automata.Estados)
+
+            foreach (Estado e in automata.Estados)
             {
-                
+
                 int n = tabla.Rows.Add(e.getValor());
                 if (automata.Tipo.Equals("MEALY"))
                 {
                     string valor = e.getValor();
-                    string transi = automata.Transiciones[valor]+"";
+                    string transi = automata.Transiciones[valor] + "";
                     string resp = automata.EstadosConRespuestas[valor] + "";
 
                     string[] transiciones = transi.Split(',');
                     string[] respuestas = resp.Split(',');
 
-                    for(int j = 1; j < automata.Estimulos.Count+1; j++)
+                    for (int j = 1; j < automata.Estimulos.Count + 1; j++)
                     {
-                        tabla.Rows[n].Cells[j].Value = transiciones[j-1] + " " + respuestas[j-1];
+                        tabla.Rows[n].Cells[j].Value = transiciones[j - 1] + " " + respuestas[j - 1];
                     }
 
 
@@ -274,22 +278,22 @@ namespace Tarea1_DianaTorres_JoseGalvis
                     string respuesta = automata.EstadosConRespuestas[valor] + "";
 
                     string[] transiciones = transi.Split(',');
-                    
 
-                    for (int j = 1; j < automata.Estimulos.Count+2; j++)
+
+                    for (int j = 1; j < automata.Estimulos.Count + 2; j++)
                     {
-                        if (j < automata.Estimulos.Count+1)
+                        if (j < automata.Estimulos.Count + 1)
                         {
-                            tabla.Rows[n].Cells[j].Value = transiciones[j-1];
+                            tabla.Rows[n].Cells[j].Value = transiciones[j - 1];
                         }
                         else
                         {
                             tabla.Rows[n].Cells[j].Value = respuesta;
                         }
-                        
+
                     }
                 }
-                
+
             }
         }
 
@@ -322,7 +326,7 @@ namespace Tarea1_DianaTorres_JoseGalvis
                         if (j != tabla.Rows[i].Cells.Count - 1)
                         {
                             transi += tabla.Rows[i].Cells[j].Value + "";
-                            if (j<tabla.Rows[i].Cells.Count-2)
+                            if (j < tabla.Rows[i].Cells.Count - 2)
                             {
                                 transi += ",";
                             }
@@ -334,9 +338,9 @@ namespace Tarea1_DianaTorres_JoseGalvis
                     }
                     else
                     {
-                        string d = tabla.Rows[i].Cells[j].Value+"";
-                        
-                        string[] datos = d.ToString().Split(' ') ;
+                        string d = tabla.Rows[i].Cells[j].Value + "";
+
+                        string[] datos = d.ToString().Split(' ');
                         transi += datos[0];
                         resp += datos[1];
 
@@ -347,12 +351,12 @@ namespace Tarea1_DianaTorres_JoseGalvis
                         }
                     }
 
-                    
+
                 }
-                
+
                 hTransiciones.Add(estado, transi);
                 hRespuestas.Add(estado, resp);
-                
+
 
             }
 
@@ -368,12 +372,12 @@ namespace Tarea1_DianaTorres_JoseGalvis
 
             string partic = "";
             string conjunt = "";
-            foreach(List<string> conjunto in particionFinal)
+            foreach (List<string> conjunto in particionFinal)
             {
                 partic += conjunt;
                 conjunt = "";
                 conjunt += "{";
-               for(int i=0; i < conjunto.Count; i++)
+                for (int i = 0; i < conjunto.Count; i++)
                 {
                     string estado = conjunto[i];
                     conjunt += estado + ",";
