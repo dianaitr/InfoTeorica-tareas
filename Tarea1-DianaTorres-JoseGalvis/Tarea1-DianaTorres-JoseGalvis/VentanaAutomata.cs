@@ -139,15 +139,15 @@ namespace Tarea1_DianaTorres_JoseGalvis
                     {
 
                         Boolean igual = false;
-                        for (int i = 0; i < valoresT.Length; i++)
-                        {
-                            if (valoresT[0].Equals(comboLlegada.Text))
-                            {
-                                igual = true;
-                                throw new Exception("La transición ya existe. Cambie el estado de llegada.");
-                            }
-                            break;
-                        }
+                        //for (int i = 0; i < valoresT.Length; i++)
+                        //{
+                        //    if (valoresT[0].Equals(comboLlegada.Text))
+                        //    {
+                        //        igual = true;
+                        //        throw new Exception("La transición ya existe. Cambie el estado de llegada.");
+                        //    }
+                        //    break;
+                        //}
 
                         if (igual == false)
                         {
@@ -293,13 +293,49 @@ namespace Tarea1_DianaTorres_JoseGalvis
         public void actualizarAutomataTabla()
         {
             tabla.Rows.Clear();
+            
             foreach(Estado e in automata.Estados)
             {
-                //string[] llegadasE = automata.Transiciones[e.getValor()].ToString().Split(',');
-                //foreach(string l in llegadasE)
-                //{
-                    tabla.Rows.Add(e.getValor());
-                //}
+                
+                int n = tabla.Rows.Add(e.getValor());
+                if (automata.Tipo.Equals("MEALY"))
+                {
+                    string valor = e.getValor();
+                    string transi = automata.Transiciones[valor]+"";
+                    string resp = automata.EstadosConRespuestas[valor] + "";
+
+                    string[] transiciones = transi.Split(',');
+                    string[] respuestas = resp.Split(',');
+
+                    for(int j = 1; j < automata.Estimulos.Count+1; j++)
+                    {
+                        tabla.Rows[n].Cells[j].Value = transiciones[j-1] + " " + respuestas[j-1];
+                    }
+
+
+                }
+                else
+                {
+                    string valor = e.getValor();
+                    string transi = automata.Transiciones[valor] + "";
+                    string respuesta = automata.EstadosConRespuestas[valor] + "";
+
+                    string[] transiciones = transi.Split(',');
+                    
+
+                    for (int j = 1; j < automata.Estimulos.Count+2; j++)
+                    {
+                        if (j < automata.Estimulos.Count+1)
+                        {
+                            tabla.Rows[n].Cells[j].Value = transiciones[j-1];
+                        }
+                        else
+                        {
+                            tabla.Rows[n].Cells[j].Value = respuesta;
+                        }
+                        
+                    }
+                }
                 
             }
         }

@@ -161,14 +161,9 @@ namespace Tarea1_DianaTorres_JoseGalvis
         {
             foreach(Estado est in estadosBorrar)
             {
-                for(int i=0; i<Transiciones.Count; i++)
-                {
-                    if (Transiciones.ContainsKey(est.getValor()))
-                    {
-                        Transiciones.Remove(est.getValor());
-                    }
-                    
-                }
+                transiciones.Remove(est.getValor());
+                estadosConRespuestas.Remove(est.getValor());     
+                
             }
         }
 
