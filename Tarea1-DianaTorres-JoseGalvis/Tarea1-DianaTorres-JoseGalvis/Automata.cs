@@ -32,7 +32,7 @@ namespace Tarea1_DianaTorres_JoseGalvis
         public Automata(string tipo, List<Estado> estados, List<String> estimulos, List<string> rpta)
         {
             this.Tipo = tipo;
-            
+
             transiciones = new Hashtable();
             this.Estados = estados;
             this.Estimulos = estimulos;
@@ -41,21 +41,21 @@ namespace Tarea1_DianaTorres_JoseGalvis
             //inicializarEstadosConRespuestas();
         }
 
-        
+
         public void inicializarEstadosConRespuestas()
         {
             estadosConRespuestas = new Hashtable();
             switch (tipo)
             {
                 case "MEALY":
-                    foreach(Estado est in estados)
+                    foreach (Estado est in estados)
                     {
                         estadosConRespuestas.Add(est, "");
                     }
                     break;
                 case "MOORE":
 
-                    foreach(string res in respuestas)
+                    foreach (string res in respuestas)
                     {
                         estadosConRespuestas.Add(res, "");
                     }
@@ -72,50 +72,50 @@ namespace Tarea1_DianaTorres_JoseGalvis
         {
             //try
             //{
-                reestablecerEstados();
+            reestablecerEstados();
 
-                Estado estadoInicial = estados.First();
-                estadoInicial.setEstaVisitado(true);
-                Queue<string> cola = new Queue<string>();
-                cola.Enqueue(estadoInicial.getValor());
-                List<string> lista = new List<string>();
+            Estado estadoInicial = estados.First();
+            estadoInicial.setEstaVisitado(true);
+            Queue<string> cola = new Queue<string>();
+            cola.Enqueue(estadoInicial.getValor());
+            List<string> lista = new List<string>();
 
-                while (cola.Count != 0)
+            while (cola.Count != 0)
+            {
+                string actual = cola.Dequeue();
+                lista.Add(actual);
+                List<string> aux = new List<string>();
+
+                string t = transiciones[actual] + "";
+                string[] transActuales = t.Split(',');
+                for (int i = 0; i < transActuales.Length; i++)
                 {
-                    string actual = cola.Dequeue();
-                    lista.Add(actual);
-                    List<string> aux = new List<string>();
-
-                    string t = transiciones[actual] + "";
-                    string[] transActuales = t.Split(',');
-                    for (int i = 0; i < transActuales.Length; i++)
-                    {
-                        aux.Add(transActuales[i]);
-                    }
-
-                    for (int i = 0; i < aux.Count; i++)
-                    {
-                        string sig = aux.ElementAt(i);
-                        
-                        if (buscarEstado(sig).isEstaVisitado() == false)
-                        {
-                            buscarEstado(sig).setEstaVisitado(true);
-                            cola.Enqueue(sig);
-                        }
-
-
-                    }
+                    aux.Add(transActuales[i]);
                 }
 
-                
+                for (int i = 0; i < aux.Count; i++)
+                {
+                    string sig = aux.ElementAt(i);
+
+                    if (buscarEstado(sig).isEstaVisitado() == false)
+                    {
+                        buscarEstado(sig).setEstaVisitado(true);
+                        cola.Enqueue(sig);
+                    }
+
+
+                }
+            }
+
+
             List<Estado> estadosConexos = estados.Where(e => e.isEstaVisitado() == true).ToList();
-                
+
             List<Estado> estadosMalos = estados.Where(e => e.isEstaVisitado() == false).ToList();
 
             actualizarHashtables(estadosMalos);
             estados = estadosConexos;
 
-            
+
 
             //}
             //    catch (Exception ex)
@@ -137,8 +137,8 @@ namespace Tarea1_DianaTorres_JoseGalvis
         public Estado buscarEstado(string valor)
         {
 
-            
-            
+
+
             return estados.Where(v => v.getValor().Equals(valor)).First();
         }
 
@@ -159,11 +159,11 @@ namespace Tarea1_DianaTorres_JoseGalvis
 
         public void actualizarHashtables(List<Estado> estadosBorrar)
         {
-            foreach(Estado est in estadosBorrar)
+            foreach (Estado est in estadosBorrar)
             {
                 transiciones.Remove(est.getValor());
-                estadosConRespuestas.Remove(est.getValor());     
-                
+                estadosConRespuestas.Remove(est.getValor());
+
             }
         }
 
@@ -176,20 +176,12 @@ namespace Tarea1_DianaTorres_JoseGalvis
             List<List<string>> particion = new List<List<string>>();
             particion = particion1();
 
-            ////Hash donde cada estado tiene el indice del conjunto en donde está 
-            ////o cada uno tiene su indice guardado(atributo, ver clase Estado)
-            //Hashtable estadosIndiceConjunto = new Hashtable();
-            //foreach(Estado e in estados)
-            //{
-            //    int indiceEstado = buscarConjunto(e.getValor());
-            //    estadosIndiceConjunto.Add(e.getValor(), indiceEstado);
-            //}
 
-            List<List<string>> particionAnterior = new List<List<string>>(); 
-           
+            List<List<string>> particionAnterior = new List<List<string>>();
+
 
             //ver while
-            while (particionAnterior != particion && !particionAnterior.Equals( particion))
+            while (particionAnterior != particion && !particionAnterior.Equals(particion))
             {
                 //recorro cada conjunto del particionamiento
                 //i es el indice del conjunto actual
@@ -201,9 +193,9 @@ namespace Tarea1_DianaTorres_JoseGalvis
                     particion = actualizarParticion(particion);
                 }
 
-                
+
             }
-           
+
 
 
             return particion;
@@ -216,41 +208,41 @@ namespace Tarea1_DianaTorres_JoseGalvis
             List<List<String>> particion = new List<List<string>>();
 
 
-            for (int i=0; i < lista.Count; i++)
+            for (int i = 0; i < lista.Count; i++)
             {
                 List<string> conjunto = new List<string>();
-                
+
 
                 foreach (Estado e in estados)
                 {
                     if (e.IndiceConjunto == i)
-                    {                        
-                        conjunto.Add( e.getValor());
-                       
+                    {
+                        conjunto.Add(e.getValor());
+
                     }
 
                 }
                 particion.Add(conjunto);
             }
             return particion;
-            
+
         }
 
         //Particiona 1 conjunto especifico de estados segun sus transiciones
         private void particionUnConjunto(List<string> conjunto)
         {
             Boolean next = false;
-            foreach(string eActual in conjunto)
+            foreach (string eActual in conjunto)
             {
-                
+
                 String[] tActual = transiciones[eActual].ToString().Split(',');
-                
-                foreach(string eSiguiente in conjunto)
+
+                foreach (string eSiguiente in conjunto)
                 {
-                    
+
                     String[] tSiguiente = transiciones[eSiguiente].ToString().Split(',');
                     next = false;
-                    for(int i=0; i < estimulos.Count && next==false; i++)
+                    for (int i = 0; i < estimulos.Count && next == false; i++)
                     {
                         Estado estadoActual = buscarEstado(tActual[i]);
                         Estado estadoSiguiente = buscarEstado(tSiguiente[i]);
@@ -261,77 +253,53 @@ namespace Tarea1_DianaTorres_JoseGalvis
                             next = true;
                         }
                     }
-                    
+
                 }
             }
-            
+
         }
 
-        
+
         //este metodo hace la particion 1
         //agrupa los estados segun sus respuestas
         //varía dependiendo del tipo de la maquina de estado
         public List<List<string>> particion1()
         {
             List<List<string>> particion = new List<List<string>>();
+            List<List<string>> listita = new List<List<string>>();
 
-            if (tipo.Equals("MEALY"))
+            List<Estado> auxEstados = new List<Estado>();
+            auxEstados = estados;
+            List<Estado> auxEstados2 = new List<Estado>();
+            
+            int i = 1;
+            foreach (Estado eActual in auxEstados)
             {
-                int i = 0;
-                foreach(string eActual in EstadosConRespuestas)
+
+                string resActual = estadosConRespuestas[eActual.getValor()].ToString();
+
+                foreach (Estado eSiguiente in auxEstados)
                 {
-                    string resActual = estadosConRespuestas[eActual].ToString();
-                    int j = 0;
-                    foreach(string eSiguiente in EstadosConRespuestas)
+                    if (eActual != eSiguiente && !auxEstados2.Contains(eSiguiente))
                     {
-                        if (EstadosConRespuestas[eActual].Equals(estadosConRespuestas[eSiguiente]))
-                        {
-                            particion[i][j] = eSiguiente;
-                            buscarEstado(eSiguiente).IndiceConjunto = i;
-                         j++;      
-                        }
-                    }
-                    i++;
-                }
-            }else if (tipo.Equals("MOORE"))
-            {
-                //int i = 0;
-                //foreach(string respuesta in EstadosConRespuestas)
-                //{
-                //    string[] esta = EstadosConRespuestas[respuesta].ToString().Split(',');
-                //    int j = 0;
-                //    foreach (string e in esta)
-                //    {
-
-                //        particion[i][j] = e;
-                //        buscarEstado(e).IndiceConjunto = i;
-                //        j++;
-                //    }
-                //    i++;
-                //}
-
-                int i = 0;
-                foreach (Estado eActual in Estados)
-                {
-
-                    string resActual = estadosConRespuestas[eActual.getValor()].ToString();
-                    
-                    List<string> listita = new List<string>();
-                    particion.Add(listita);
-                    foreach (Estado eSiguiente in Estados)
-                    {
-                        if (EstadosConRespuestas[eActual.getValor()].Equals(estadosConRespuestas[eSiguiente.getValor()]))
+                        if (!resActual.Equals(estadosConRespuestas[eSiguiente.getValor()]))
                         {
 
-                            listita.Add(eSiguiente.getValor());
-                             
                             eSiguiente.IndiceConjunto = i;
-                           
+
                         }
                     }
-                    i++;
                 }
+                i++;
+                auxEstados2.Add(eActual);
+
             }
+
+
+
+            
+
+            
 
             return particion;
         }
