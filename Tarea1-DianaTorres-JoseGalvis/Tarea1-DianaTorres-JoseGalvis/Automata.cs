@@ -266,7 +266,7 @@ namespace Tarea1_DianaTorres_JoseGalvis
         public List<List<string>> particion1()
         {
             List<List<string>> particion = new List<List<string>>();
-            List<List<string>> listita = new List<List<string>>();
+           
 
             List<Estado> auxEstados = new List<Estado>();
             auxEstados = estados;
@@ -295,12 +295,29 @@ namespace Tarea1_DianaTorres_JoseGalvis
 
             }
 
+            List<string> listita = new List<string>();
+            List<string> auxEstados3 = new List<string>();
+            auxEstados2 = new List<Estado>();
+
+            foreach (Estado estActual in estados)
+            {
+                listita = new List<string>();
+                foreach (Estado estSiguiente in estados)
+                {
+                    
+                    if ( estActual.IndiceConjunto == estSiguiente.IndiceConjunto
+                        && !auxEstados2.Contains(estSiguiente))
+                    {
+                        listita.Add(estSiguiente.getValor());
+                        auxEstados2.Add(estSiguiente);
+                    }
+                }
+                if(listita.Count!=0) particion.Add(listita);
+                
+            }
 
 
             
-
-            
-
             return particion;
         }
 
