@@ -180,8 +180,8 @@ namespace Tarea1_DianaTorres_JoseGalvis
             List<List<string>> particionAnterior = new List<List<string>>();
 
 
-            //ver while
-            while (particionAnterior != particion && !particionAnterior.Equals(particion))
+            
+            while (particionAnterior.Count != particion.Count)
             {
                 //recorro cada conjunto del particionamiento
                 //i es el indice del conjunto actual
@@ -190,6 +190,7 @@ namespace Tarea1_DianaTorres_JoseGalvis
                     particionAnterior = particion;
 
                     particionUnConjunto(particion[i]);
+
                     particion = actualizarParticion(particion);
                 }
 
@@ -208,7 +209,7 @@ namespace Tarea1_DianaTorres_JoseGalvis
             List<List<String>> particion = new List<List<string>>();
 
 
-            for (int i = 0; i < lista.Count; i++)
+            for (int i = 0; i < estados.Count; i++)
             {
                 List<string> conjunto = new List<string>();
 
@@ -222,8 +223,9 @@ namespace Tarea1_DianaTorres_JoseGalvis
                     }
 
                 }
-                particion.Add(conjunto);
+                if(conjunto.Count!=0) particion.Add(conjunto);
             }
+            
             return particion;
 
         }
@@ -231,7 +233,9 @@ namespace Tarea1_DianaTorres_JoseGalvis
         //Particiona 1 conjunto especifico de estados segun sus transiciones
         private void particionUnConjunto(List<string> conjunto)
         {
+            List<string> yaRevisado = new List<string>();
             Boolean next = false;
+
             foreach (string eActual in conjunto)
             {
 
@@ -242,19 +246,22 @@ namespace Tarea1_DianaTorres_JoseGalvis
 
                     String[] tSiguiente = transiciones[eSiguiente].ToString().Split(',');
                     next = false;
-                    for (int i = 0; i < estimulos.Count && next == false; i++)
+                    for (int i = 0; i < estimulos.Count && next == false 
+                        && !yaRevisado.Contains(eSiguiente); i++)
                     {
                         Estado estadoActual = buscarEstado(tActual[i]);
                         Estado estadoSiguiente = buscarEstado(tSiguiente[i]);
 
                         if (estadoActual.IndiceConjunto != estadoSiguiente.IndiceConjunto)
                         {
-                            estadoSiguiente.IndiceConjunto += 1;
+                            Estado cambiar = buscarEstado(eSiguiente);
+                            cambiar.IndiceConjunto += 1;
                             next = true;
                         }
                     }
 
                 }
+                yaRevisado.Add(eActual);
             }
 
         }
