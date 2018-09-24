@@ -237,8 +237,6 @@ namespace Tarea1_DianaTorres_JoseGalvis
             List<string> yaRevisado = new List<string>();
             Boolean next = false;
 
-            //foreach (string eActual in conjunto)
-            //{
                 string eActual = conjunto.ElementAt(0);
                 String[] tActual = transiciones[eActual].ToString().Split(',');
             yaRevisado.Add(eActual);
@@ -263,7 +261,7 @@ namespace Tarea1_DianaTorres_JoseGalvis
 
                 }
                
-            //}
+           
 
         }
 
@@ -276,60 +274,40 @@ namespace Tarea1_DianaTorres_JoseGalvis
             List<List<string>> particion = new List<List<string>>();
 
             Hashtable hashNueva = new Hashtable();
-            for(int i = 0; i < respuestas.Count; i++)
+            if (tipo.Equals("MOORE"))
             {
+                for (int i = 0; i < respuestas.Count; i++)
+                {
+                    hashNueva.Add(respuestas.ElementAt(i),"");
+                }
 
+                for(int i = 0; i < estados.Count; i++)
+                {
+                    
+                   hashNueva[estadosConRespuestas[estados.ElementAt(i).getValor()]] += estados.ElementAt(i).getValor() + ",";
+                    
+                    
+                }
+
+                for(int i = 0; i < respuestas.Count; i++)
+                {
+                    List<string> conjunto = new List<string>();
+                    string d = hashNueva[respuestas.ElementAt(i)] + "";
+                    string[] info = d.Split(',');
+                    for(int j = 0; j < info.Length; j++)
+                    {
+                        if (!info[j].Equals(""))
+                        {
+                            conjunto.Add(info[j]);
+                        }
+                    }
+                    foreach(string e in conjunto)
+                    {
+                        buscarEstado(e).IndiceConjunto = i;
+                    }
+                    particion.Add(conjunto);
+                }
             }
-
-            //List<Estado> auxEstados = new List<Estado>();
-            //auxEstados = estados;
-            //List<Estado> auxEstados2 = new List<Estado>();
-
-
-            //foreach (Estado eActual in auxEstados)
-            //{
-
-            //    string resActual = estadosConRespuestas[eActual.getValor()].ToString();
-
-            //    foreach (Estado eSiguiente in auxEstados)
-            //    {
-            //        if (eActual != eSiguiente && !auxEstados2.Contains(eSiguiente))
-            //        {
-            //            if (!resActual.Equals(estadosConRespuestas[eSiguiente.getValor()]))
-            //            {
-
-            //                eSiguiente.IndiceConjunto +=1;
-
-            //            }
-            //        }
-            //    }
-
-            //    auxEstados2.Add(eActual);
-
-            //}
-
-            //List<string> listita = new List<string>();
-            //List<string> auxEstados3 = new List<string>();
-            //auxEstados2 = new List<Estado>();
-
-            //foreach (Estado estActual in estados)
-            //{
-            //    listita = new List<string>();
-            //    foreach (Estado estSiguiente in estados)
-            //    {
-
-            //        if ( estActual.IndiceConjunto == estSiguiente.IndiceConjunto
-            //            && !auxEstados2.Contains(estSiguiente))
-            //        {
-            //            listita.Add(estSiguiente.getValor());
-            //            auxEstados2.Add(estSiguiente);
-            //        }
-            //    }
-            //    if(listita.Count!=0) particion.Add(listita);
-
-            //}
-
-
 
 
 
