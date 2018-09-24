@@ -369,23 +369,27 @@ namespace Tarea1_DianaTorres_JoseGalvis
         private void btn_automataMinimo_Click(object sender, EventArgs e)
         {
             List<List<string>> particionFinal = automata.particionamiento();
+            string particionamientos = "";
 
-            string partic = "";
-            string conjunt = "";
-            foreach (List<string> conjunto in particionFinal)
+            for(int i = 0; i < particionFinal.Count; i++)
             {
-                partic += conjunt;
-                conjunt = "";
-                conjunt += "{";
-                for (int i = 0; i < conjunto.Count; i++)
+                List<string> particionActual = particionFinal.ElementAt(i);
+                string conjunto = "{";
+                for(int j = 0; j < particionActual.Count; j++)
                 {
-                    string estado = conjunto[i];
-                    conjunt += estado + ",";
+                    if (j == particionActual.Count - 1)
+                    {
+                        conjunto += particionActual.ElementAt(j) + "}";
+                    }
+                    else
+                    {
+                        conjunto += particionActual.ElementAt(j) + ",";
+                    }
                 }
-                conjunt += "}";
+                particionamientos += conjunto + " ";
             }
-
-            particionamientoFinal.Text = partic;
+            
+            particionamientoFinal.Text = particionamientos;
 
         }
     }
