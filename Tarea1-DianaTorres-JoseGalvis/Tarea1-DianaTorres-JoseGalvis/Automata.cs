@@ -67,12 +67,13 @@ namespace Tarea1_DianaTorres_JoseGalvis
 
 
 
-        //
+        //Este metodo utiliza el algoritmo BFS para encontrar los estados que son
+        //alcanzables desde el estado inicial. Asi mismo, elimina del automata los que no lo son.
         public void BFS()
         {
-            //try
-            //{
-            reestablecerEstados();
+            try
+            {
+                reestablecerEstados();
 
             Estado estadoInicial = estados.First();
             estadoInicial.setEstaVisitado(true);
@@ -117,23 +118,23 @@ namespace Tarea1_DianaTorres_JoseGalvis
 
 
 
-            //}
-            //    catch (Exception ex)
-            //    {
-            //        throw new Exception("No se pudo encontrar el automata conexo equivalente. Intente de nuevo. ");
-            //    }
-
-
-
-
-
-
-
-
         }
+                catch (Exception ex)
+                {
+                    throw new Exception("No se pudo encontrar el automata conexo equivalente. Intente de nuevo. ");
+    }
 
 
 
+
+
+
+
+
+}
+
+
+        //Este metodo busca un estado segun su valor, y lo retorna.
         public Estado buscarEstado(string valor)
         {
 
@@ -157,6 +158,10 @@ namespace Tarea1_DianaTorres_JoseGalvis
             }
         }
 
+
+        //Este metodo actualiza las hashTables de EstadosConRespuestas y Transiciones despues de que el automata haya sido
+        //sido actualizado a su conexo equivalente. Borra de estas hashTables todos los registros de los estados que no hacen
+        //parte del automata conexo equivalente
         public void actualizarHashtables(List<Estado> estadosBorrar)
         {
             foreach (Estado est in estadosBorrar)
@@ -307,6 +312,52 @@ namespace Tarea1_DianaTorres_JoseGalvis
                     }
                     particion.Add(conjunto);
                 }
+            }
+            else
+            {
+
+                List<string> combinacionRespuestas = new List<string>();
+                for (int i = 0; i < respuestas.Count; i++)
+                {
+                    for(int j = 0; j < respuestas.Count; j++)
+                    {
+                        hashNueva.Add(respuestas.ElementAt(i) + "," + respuestas.ElementAt(j), "");
+                        combinacionRespuestas.Add(respuestas.ElementAt(i) + "," + respuestas.ElementAt(j));
+                    }
+                    
+                }
+
+                for (int i = 0; i < estados.Count; i++)
+                {
+
+                    hashNueva[estadosConRespuestas[estados.ElementAt(i).getValor()]] += estados.ElementAt(i).getValor() + ",";
+
+
+                }
+
+                for (int i = 0; i < hashNueva.Count; i++)
+                {
+                    List<string> conjunto = new List<string>();
+                    string d = hashNueva[combinacionRespuestas.ElementAt(i)] + "";
+                    string[] info = d.Split(',');
+                    for (int j = 0; j < info.Length; j++)
+                    {
+                        if (!info[j].Equals(""))
+                        {
+                            conjunto.Add(info[j]);
+                        }
+                    }
+                    foreach (string e in conjunto)
+                    {
+                        buscarEstado(e).IndiceConjunto = i;
+                    }
+                    if (conjunto.Count != 0)
+                    {
+                        particion.Add(conjunto);
+                    }
+                    
+                }
+
             }
 
 
