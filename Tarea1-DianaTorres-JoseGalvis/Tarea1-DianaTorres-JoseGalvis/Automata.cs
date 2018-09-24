@@ -37,32 +37,9 @@ namespace Tarea1_DianaTorres_JoseGalvis
             this.Estados = estados;
             this.Estimulos = estimulos;
             this.Respuestas = rpta;
-
-            //inicializarEstadosConRespuestas();
+            
         }
-
-
-        public void inicializarEstadosConRespuestas()
-        {
-            estadosConRespuestas = new Hashtable();
-            switch (tipo)
-            {
-                case "MEALY":
-                    foreach (Estado est in estados)
-                    {
-                        estadosConRespuestas.Add(est, "");
-                    }
-                    break;
-                case "MOORE":
-
-                    foreach (string res in respuestas)
-                    {
-                        estadosConRespuestas.Add(res, "");
-                    }
-                    break;
-            }
-        }
-
+        
 
 
 

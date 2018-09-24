@@ -10,10 +10,7 @@ namespace Tarea1_DianaTorres_JoseGalvis
 {
    public  class Estado
     {
-        /// <summary>
-        /// ////////
-        /// </summary>
-
+        
 
         private Boolean estaVisitado;
 
