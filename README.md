@@ -1,2 +1,2 @@
-# InfoTeorica-tareas
-tareas de infoteorica
+# Informatica Téorica
+
